@@ -13,12 +13,12 @@ class Cookie(Pmf):  # 引数に仮説の配列を取る
         'Bowl2': dict(vanilla=0.5, chocolate=0.5),
     }
 
-    def Likelihood(self, data, hypo):  # 尤度 P(D|H) の設定。各仮説の下でのデータが得られる確率。
+    def Likelihood(self, data, hypo):  # 尤度 P(D|H) を計算するメソッド。各仮説の下でのデータが得られる確率。
         mix = self.mixes[hypo]
         like = mix[data]  # like = P(D|H)
         return like
 
-    def Update(self, data):  # 事後確率 P(H|D) の計算。
+    def Update(self, data):  # 事後確率 P(H|D) を計算するメソッド。
         for hypo in self.Values():  # ここで、self.Valuesは仮説の配列を返す。
             like = self.Likelihood(data, hypo)  # Cookie.Likelihood()のこと。自身のクラスのメソッドを呼んでいる。
             self.Mult(hypo, like)
