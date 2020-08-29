@@ -5,7 +5,7 @@ class Cookie(Pmf):  # 引数に仮説の配列を取る
     def __init__(self, hypos):  # 事前確率 P(H) の設定。
         Pmf.__init__(self)
         for hypo in hypos:
-            self.Set(hypo, 1)  # selfはクラス自身なので、self,Set()はCookie.Set()のこと
+            self.Set(hypo, 1)  # selfはクラス自身なので、self.Set()はCookie.Set()のこと
         self.Normalize()
 
     mixes = {
